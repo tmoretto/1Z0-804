@@ -18,7 +18,7 @@ public class ForwardReferenceTest {
 	private int x = 0;
 
 	// Illustration: Illegal
-	private ForwardReferenceTest b = a.echoReference();
+	//private ForwardReferenceTest b = a.echoReference(); //error
 	private ForwardReferenceTest a = new ForwardReferenceTest();
 
 }
