@@ -15,7 +15,7 @@ public class ParentDerivedTest {
 		DerivedTwo d2 = new DerivedTwo();
 		
 		//d1 = (DerivedOne)d2; //compile error
-
+		
 	}
 
 }
