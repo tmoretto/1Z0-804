@@ -2,6 +2,9 @@ package br.com.cert.labs.nio;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -102,4 +105,34 @@ public class NIO2Test {
 	    assertEquals("/home/baeldung/articles", cleanPath.toString());
 	    assertEquals("/home/articles", cleanPath2.toString());
 	}
+	
+	@Test
+	public void givenPath_whenConvertsToBrowseablePath_thenCorrect() {
+	    Path p = Paths.get("/home/baeldung/articles.html");
+	    URI uri = p.toUri();
+	    assertEquals("file:///home/baeldung/articles.html", uri.toString());
+	}
+	
+	@Test
+	public void givenPath_whenConvertsToAbsolutePath_thenCorrect() {
+	    Path p = Paths.get("/home/baeldung/articles.html");
+	    Path absPath = p.toAbsolutePath();
+	    assertEquals("/home/baeldung/articles.html", absPath.toString());
+	}
+	
+	@Test
+	public void givenExistingPath_whenGetsRealPathToFile_thenCorrect() throws IOException {
+	    Path p = Paths.get(HOME);
+	    Path realPath = p.toRealPath();
+	    assertEquals(HOME, realPath.toString());
+	}
+	
+	@Test(expected = NoSuchFileException.class)
+	public void givenInExistentPath_whenFailsToConvert_thenCorrect() throws IOException {
+	    Path p = Paths.get("E:\\home\\baeldung\\articles.html");
+	     
+	    p.toRealPath();
+	}
+
+
 }
