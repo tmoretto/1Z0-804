@@ -1,6 +1,8 @@
 package br.com.cert.labs.nio;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.net.URI;
@@ -133,6 +135,114 @@ public class NIO2Test {
 	     
 	    p.toRealPath();
 	}
+	
+	@Test
+	public void givenTwoPaths_whenJoinsAndResolves_thenCorrect() {
+	    Path p1 = Paths.get("/baeldung/articles");
+	    Path p2 = p1.resolve("java");
+	    assertEquals("/baeldung/articles/java", p2.toString());
+	}
 
+	@Test
+	public void givenTwoSamePaths_whenJoinsAndResolves_thenCorrect() {
+	    Path p1 = Paths.get("/baeldung/articles");
+	    Path p2 = p1.resolve("articles/java");
+	    assertEquals("/baeldung/articles/articles/java", p2.toString());
+	}
+	
+	@Test
+	public void givenTwoSamePaths2_whenJoinsAndResolves_thenCorrect() {
+	    Path p1 = Paths.get("/baeldung/articles");
+	    Path p2 = p1.resolve("/articles/java");
+	    assertEquals("/articles/java", p2.toString());
+	}
+	
+	@Test
+	public void givenTwoPathsAnFile_whenJoinsAndResolves_thenCorrect() {
+	    Path p1 = Paths.get("/Whizlabs/java/NIO/myfiles");
+	    Path p2 = Paths.get("myfiles/myfile.txt");
+	    Path p = p2.resolve(p1);
+	    
+	    assertEquals("/Whizlabs/java/NIO/myfiles", p.toString());
+	}
 
+	@Test
+	public void givenSiblingPaths_whenCreatesPathToOther_thenCorrect() {
+	    Path pathArticles = Paths.get("articles");
+	    Path pathAuthors = Paths.get("authors");
+	 
+	    Path pathArticles_relative_pathAuthors = pathArticles.relativize(pathAuthors);
+	    assertEquals("../authors", pathArticles_relative_pathAuthors.toString());
+	    
+	    Path pathAuthors_relative_pathArticles = pathAuthors.relativize(pathArticles);
+	    assertEquals("../articles", pathAuthors_relative_pathArticles.toString());
+	}
+
+	@Test
+	public void givenNonSiblingPaths_whenCreatesPathToOther_thenCorrect() {
+	    Path p1 = Paths.get("/baeldung");
+	    Path p2 = Paths.get("/baeldung/authors/articles");
+	 
+	    Path p1_rel_p2 = p1.relativize(p2);
+	    assertEquals("authors/articles", p1_rel_p2.toString());
+	    
+	    Path p2_rel_p1 = p2.relativize(p1);
+	    assertEquals("../..", p2_rel_p1.toString());
+	}
+	
+	@Test
+	public void givenNonSiblingPaths_whenCreatesPathToOther2_thenCorrect() {
+	    Path p1 = Paths.get("/baeldung");
+	    Path p2 = Paths.get("/xpto/xyz");
+	 
+	    Path p1_rel_p2 = p1.relativize(p2);
+	    assertEquals("../xpto/xyz", p1_rel_p2.toString());
+	    
+	    Path p2_rel_p1 = p2.relativize(p1);
+	    assertEquals("../../baeldung", p2_rel_p1.toString());
+	}
+	
+
+	@Test
+	public void givenNonSiblingPaths_whenCreatesPathToOther3_thenCorrect() {
+	    Path path01 = Paths.get("Topic.txt");
+	    Path path02 = Paths.get("Demo.txt");
+	    Path path03 = Paths.get("/Java/JavaFX/Topic.txt");
+	    Path path04 = Paths.get("/Java/2011");
+	
+	    Path path01_to_path02 = path01.relativize(path02);
+	    assertEquals("../Demo.txt", path01_to_path02.toString());
+	
+	    Path path02_to_path01 = path02.relativize(path01);
+	    assertEquals("../Topic.txt", path02_to_path01.toString());
+	
+	    Path path03_to_path04 = path03.relativize(path04);
+	    assertEquals("../../2011", path03_to_path04.toString());
+	
+	    Path path04_to_path03 = path04.relativize(path03);
+	    assertEquals("../JavaFX/Topic.txt", path04_to_path03.toString());
+	}
+	
+	@Test
+	public void givenTwoPaths_whenTestsEquality_thenCorrect() {
+	    Path p1 = Paths.get("/baeldung/articles/myfile.txt");
+	    Path p2 = Paths.get("/baeldung/articles/myfile.txt");
+	    Path p3 = Paths.get("/baeldung/authors");
+	 
+	    assertTrue(p1.equals(p2));
+	    assertFalse(p1.equals(p3));
+	}
+
+	@Test
+	public void givenPath_whenInspectsStart_thenCorrect() {
+	    Path p1 = Paths.get("/baeldung/articles");
+	    assertTrue(p1.startsWith("/baeldung"));
+	}
+	
+	@Test
+	public void givenPath_whenInspectsEnd_thenCorrect() {
+	    Path p1 = Paths.get("/baeldung/articles");
+	    assertTrue(p1.endsWith("articles"));
+	}
+	
 }
