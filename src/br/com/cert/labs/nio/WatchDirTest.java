@@ -29,16 +29,15 @@ public class WatchDirTest {
 			
 			for (WatchEvent event : events) {
 				if (event.kind() == ENTRY_CREATE) {
-					System.out.println("A file Created. " + event.toString());
+					System.out.println("A file Created.");
 				}
 				if (event.kind() == ENTRY_MODIFY) {
-					System.out.println("A file Modified. " + event.toString());
+					System.out.println("A file Modified.");
 				}
 				if (event.kind() == ENTRY_DELETE) {
-					System.out.println("A file Delete. " + event.toString());
+					System.out.println("A file Delete.");
 				}
 			}
-			
 		} catch (ClosedWatchServiceException e) {
 			System.out.println("Closed");
 		} catch (NullPointerException e) {
