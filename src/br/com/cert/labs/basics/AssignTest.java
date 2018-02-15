@@ -38,7 +38,7 @@ public class AssignTest {
 	    // aDog variable is still pointing to the "Max" dog when foo(...) returns
 	    System.out.println("equal Max? " + aDog.getName().equals("Max"));  // true, java passes by value
 	    System.out.println("equal Fifi? " + aDog.getName().equals("Fifi")); // false
-		
+	    
 	}
 	
 	static void print(String a, String b) {
