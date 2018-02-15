@@ -109,6 +109,18 @@ public class NIO2Test {
 	}
 	
 	@Test
+	public void givenPath_whenRemovesRedundancies_thenCorrect2() {
+	    Path p = Paths.get("/../baeldung/articles");
+	    Path p2 = Paths.get("/home/baeldung/../articles");
+	    
+	    Path cleanPath = p.normalize();
+	    Path cleanPath2 = p2.normalize();
+	  
+	    assertEquals("/baeldung/articles", cleanPath.toString());
+	    assertEquals("/home/articles", cleanPath2.toString());
+	}
+	
+	@Test
 	public void givenPath_whenConvertsToBrowseablePath_thenCorrect() {
 	    Path p = Paths.get("/home/baeldung/articles.html");
 	    URI uri = p.toUri();
