@@ -26,4 +26,5 @@ class Lion extends Animal {
 	
 	static void runFast() {}
 	*/
+	
 }
