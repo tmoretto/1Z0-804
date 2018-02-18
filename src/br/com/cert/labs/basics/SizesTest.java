@@ -6,7 +6,7 @@ public class SizesTest {
 		
 		byte b1 = 127;
 		//byte b2 = 128; //compile error
-		
+				
 		short s1 = 128;
 		//short s2 = 100000; //compile error
 		
