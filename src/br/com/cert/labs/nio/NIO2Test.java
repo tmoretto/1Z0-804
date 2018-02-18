@@ -257,5 +257,19 @@ public class NIO2Test {
 	    assertTrue(p1.endsWith("articles"));
 	}
 	
+	@Test
+	public void givenPath_whenInspectsEnd_thenCorrect1() {
+	    Path p1 = Paths.get("/baeldung/articles/java");
+	    System.out.println("Count - " + p1.getNameCount());
+	    System.out.println("0 - " + p1.getName(0).toString());
+	    System.out.println("1 - " + p1.getName(1).toString());
+	    System.out.println("2 - " + p1.getName(2).toString());
+	    
+	    
+	    Path p2 = Paths.get("/other");
+	    Path p = Paths.get(p2.getRoot().toString(), p1.subpath(0, 3).toString());
+	    assertEquals("/baeldung/articles/java", p.toString());
+	   
+	}
 	
 }

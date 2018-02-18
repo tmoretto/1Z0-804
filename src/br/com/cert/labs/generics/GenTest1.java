@@ -25,4 +25,6 @@ public class GenTest1 {
 	public static void testB(List<? extends Number> bList) {
 	}
 
+	
+	
 }
