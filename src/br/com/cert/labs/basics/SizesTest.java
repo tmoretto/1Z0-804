@@ -15,6 +15,8 @@ public class SizesTest {
 
 		long l1 = 100000;
 		//long l2 = 10000000000; //compile error
+		
+
 	}
 
 }

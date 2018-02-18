@@ -1,4 +1,4 @@
-package br.com.cert.labs.locale;
+package br.com.cert.labs.localization;
 
 import java.text.DateFormat;
 import java.text.ParseException;

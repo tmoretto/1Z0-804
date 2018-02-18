@@ -1,4 +1,4 @@
-package br.com.cert.labs.locale;
+package br.com.cert.labs.localization;
 
 import java.util.Enumeration;
 import java.util.ResourceBundle;
