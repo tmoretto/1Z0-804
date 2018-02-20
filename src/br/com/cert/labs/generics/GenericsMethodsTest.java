@@ -34,16 +34,26 @@ public class GenericsMethodsTest {
 		
 	}
 	
+	public void m0(List<? super Number> list) {
+		Number n1 = 10;
+		list.add(n1);
+		new ArrayList<Object>().add(n1);
+		new ArrayList<Number>().add(n1);
+		
+		Number n2 = list.get(0);
+	}
 
 	public void m1(List<? extends Number> list) {
-		Number n = list.get(0);
-		//list.add(n); //COMPILER DOENST KNOW TYPE 
+		Number n1 = 10;
+		//list.add(n1); //COMPILER DOENST KNOW TYPE
+		new ArrayList<Integer>().add(n1);
+		
+		Number n2 = list.get(0);
 	}
 	
 	public void m2(List<? extends Object> list) {
 		Object n = list.get(0);
 		//list.add(n); //COMPILER DOENST KNOW TYPE 
-		
 	}
 	
 	/*
