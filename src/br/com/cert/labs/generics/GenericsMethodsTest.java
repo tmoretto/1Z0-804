@@ -33,6 +33,23 @@ public class GenericsMethodsTest {
 		list.addAll(strList);
 		
 	}
+	
+
+	public void m1(List<? extends Number> list) {
+		Number n = list.get(0);
+		//list.add(n); //COMPILER DOENST KNOW TYPE 
+	}
+	
+	public void m2(List<? extends Object> list) {
+		Object n = list.get(0);
+		//list.add(n); //COMPILER DOENST KNOW TYPE 
+		
+	}
+	
+	/*
+	public void m1(List<Number extends ?> n) { // NEVER LIKE THIS
+		
+	}*/
 
 	/*
 	public void m6(ArrayList<Shape> strList) {
