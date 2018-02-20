@@ -214,7 +214,42 @@ public class NIO2Test {
 	    assertEquals("../../baeldung", p2_rel_p1.toString());
 	}
 	
+	@Test
+	public void givenNonSiblingPaths_whenCreatesPathToOther4_thenCorrect() {
+	    Path p1 = Paths.get("/photos/goa");
+	    Path p2 = Paths.get("/index.html");
+	 
+	    Path p1_rel_p2 = p1.relativize(p2);
+	    assertEquals("../../index.html", p1_rel_p2.toString());
+	    
+	    Path p2_rel_p1 = p2.relativize(p1);
+	    assertEquals("../photos/goa", p2_rel_p1.toString());
+	}
+	
+	@Test
+	public void givenNonSiblingPaths_whenCreatesPathToOther5_thenCorrect() {
+	    Path p1 = Paths.get("/photos/goa");
+	    Path p2 = Paths.get("/photos/goa");
+	 
+	    Path p1_rel_p2 = p1.relativize(p2);
+	    assertEquals("", p1_rel_p2.toString());
+	    
+	    Path p2_rel_p1 = p2.relativize(p1);
+	    assertEquals("", p2_rel_p1.toString());
+	}			
 
+	@Test(expected=IllegalArgumentException.class)
+	public void givenNonSiblingPaths_whenCreatesPathToOtherError_thenCorrect() {
+	    Path p1 = Paths.get("baeldung");
+	    Path p2 = Paths.get("/xpto/xyz");
+	 
+	    Path p1_rel_p2 = p1.relativize(p2);
+	    assertEquals("../xpto/xyz", p1_rel_p2.toString());
+	    
+	    Path p2_rel_p1 = p2.relativize(p1);
+	    assertEquals("../../baeldung", p2_rel_p1.toString());
+	}
+	
 	@Test
 	public void givenNonSiblingPaths_whenCreatesPathToOther3_thenCorrect() {
 	    Path path01 = Paths.get("Topic.txt");
