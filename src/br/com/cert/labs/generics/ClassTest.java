@@ -1,5 +1,9 @@
 package br.com.cert.labs.generics;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 interface I<A,B> {
 	
 	void setA(A a);
@@ -29,6 +33,12 @@ public class ClassTest<A, B> {
 		t2.setA("Cinquenta e cinco ponto um");
 		t2.setB(55.1);
 		t2.print();
+		
+		
+		String[] p = {"1", "2", "3"};
+		List<?> asList = new ArrayList<>(Arrays.asList(p));
+		
+		
 	}
 
 	public A getA() {
