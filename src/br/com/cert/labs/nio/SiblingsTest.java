@@ -25,10 +25,10 @@ public class SiblingsTest {
 	    resolvedPath = rootPath2.resolveSibling("tmp\\A.mp3");
 	    System.out.println("resolvedSiblingPath: " + resolvedPath);
 		   
-	    
 	    Path rootPath3 = Paths.get("docs");
 	    resolvedPath = rootPath3.resolveSibling("tmp\\A.mp3");
 	    System.out.println("resolvedSiblingPath: " + resolvedPath);
+	    
 	}
 
 }

@@ -6,6 +6,10 @@ class Atomic {
 
 class Rocker extends Atomic {
 	Rocker(String type) { System.out.print(type); }
+	
+	public int hashCode() {
+		return 1;
+	}
 }
 
 public class Mountain extends Rocker {
