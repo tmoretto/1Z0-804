@@ -54,6 +54,7 @@ public class GenericsMethodsTest {
 	public void m2(List<? extends Object> list) {
 		Object n = list.get(0);
 		//list.add(n); //COMPILER DOENST KNOW TYPE 
+		
 	}
 	
 	/*
