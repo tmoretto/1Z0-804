@@ -314,4 +314,40 @@ public class NIO2Test {
 		assertEquals("/baeldung/java", p2.toString());
 	}
 
+	@Test
+	public void givenPath_Relativize() {
+
+		Path p1 = Paths.get("/personal/./photos/../readme.txt");
+		Path p2 = Paths.get("/personal/index.html");
+		Path p3 = p1.relativize(p2);
+		assertEquals("../../../../index.html", p3.toString());
+	}
+	
+	@Test
+	public void givenPath_Relativize2() {
+
+		Path p1 = Paths.get("/personal/photos/readme.txt");
+		Path p2 = Paths.get("/personal/index.html");
+		Path p3 = p1.relativize(p2);
+		assertEquals("../../index.html", p3.toString());
+	}
+
+	@Test
+	public void givenPath_Relativize3() {
+
+		Path p1 = Paths.get("/personal/.././../readme.txt");
+		Path p2 = Paths.get("/personal/index.html");
+		Path p3 = p1.relativize(p2);
+		assertEquals("../../../../index.html", p3.toString());
+	}
+	
+	@Test
+	public void givenPath_Relativize4() {
+
+		Path p1 = Paths.get("/personal/./././readme.txt");
+		Path p2 = Paths.get("/personal/index.html");
+		Path p3 = p1.relativize(p2);
+		assertEquals("../../../../index.html", p3.toString());
+	}
+	
 }
