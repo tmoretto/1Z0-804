@@ -21,6 +21,8 @@ public class SimpleDateFormatTest {
 
 		sdf = new SimpleDateFormat("zzzz", Locale.CANADA);
 		System.out.println(sdf.format(new Date()));
+		
+		
 	}
 
 }
