@@ -28,6 +28,6 @@ public class TestClass extends A
 	{
 		Thread t1 = new A();
 		Thread t2 = new TestClass();
-		t2.start(); t1.start();
+		t2.start(); t1.start(); 
 	}
 }
