@@ -18,6 +18,8 @@ public class LockTest {
 		boolean f2 = rLock.tryLock();
 		System.out.println(f2);
 		
+		Thread.yield();
+		
 	}
 	
 	private static void readWriteLock() {
